@@ -1,2 +1,2 @@
-# GoogleScholarAlerts
-Daily Google Scholar Alerts (New Citations)
+# Daily Google Scholar Alerts (New Citations)
+
