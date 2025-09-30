@@ -7,3 +7,5 @@
 <a href="https://github.com/satoshiofficial/GoogleScholarAlerts/blob/2995b0c4691935f4c123199a0a0be1c4b260c030/10%20new%20citations%20to%20your%20articles%20-%2021%20September%202025.pdf">21 September 2025</a> (PDF of email)
 
 <a href="https://github.com/satoshiofficial/GoogleScholarAlerts/blob/c856db2437a848ce8bcfdf9279cdd88adf3a5d32/10%20new%20citations%20to%20your%20articles%20-%2022%20September%202025.pdf">22 September 2025</a> (PDF of email)
+
+<a href="https://github.com/satoshiofficial/GoogleScholarAlerts/blob/eca26235bb644e07984a6071324b7a69bb6104fe/10%20new%20citations%20to%20your%20articles%20-%2024%20September%202025.pdf">24 September</a> (PDF of email)
