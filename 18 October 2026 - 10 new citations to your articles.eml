@@ -1,0 +1,607 @@
+Delivered-To: nakamoto.satoshi.b@gmail.com
+Received: by 2002:a05:6521:4db:10b0:34c:829e:607d with SMTP id e27-n1csp4435774lkb;
+        Sun, 18 Oct 2026 04:35:36 -0700 (PDT)
+X-Received: by 2002:a05:622a:4c13:b0:535:70b4:3f82 with SMTP id d75a77b69052e-536460b54c8mr68410281cf.72.1792323336367;
+        Sun, 18 Oct 2026 04:35:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1792323336; cv=none;
+        d=google.com; s=arc-20260327;
+        b=HMSPkk+wwWqPi+wDj3UyUZn7J19fhsppQejjj/cBqFmAnI/Uavo0FZU5SrxqMnk28F
+         c5hRlFOxHFvEvd/tyCEiWYZgikqHkOxTRxGvoam6XSko6Zul8Ky+UGtG7WqP9MgZA9I6
+         bsgdWdxbfAmSCe60NiAj+TWblHvwH1+HPLfGaX8zHmdSLsF65TAH2LotycyPo0Ac8NOn
+         sAb9JOxeBYeE99ZL6NP/1uulvpkqnDDPMvwouYPaLHb2mkHBOz4DF0FhyRGcPvy7y1lW
+         cF/2qIce43sdTScqp61CuWnI4G1zDvHoy5psAT5BNEFPRaIuK6geAK0wOG9lLhPrjXqu
+         YJIw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=content-transfer-encoding:to:from:subject:message-id:date
+         :mime-version:dkim-signature;
+        bh=DefKU06xK/j3UfGxsXGpO51Tq3Y9F/3AfvW4f/vMMXk=;
+        fh=mtEEO+BjM1K6Rfo/+PR7w55j6pexuv/qjp655fjoWC8=;
+        b=drIhbmIyGRZMhX2+IaDWxDO6cl2KpQdhp1+6pzTCA7qd/mIrzUeYP7XqezBuuV0LqS
+         QFGkv3yJ/tH1DqzbkxsNmqRbQB2XrY7iTpXWjZaa7NeshcJfC2yElPyMzbKnHm0wIf2u
+         1Z1r3L4A4M/0OK3zjPSdK1bsGFC66Nj9ZIiQA9kRzDxB1WTjmzUOpj/XTUKZ4v79DMPp
+         JnFufMMlfmjsoSvY4oxVmPa5L7WzCatV/8lipZCrBMTx+V78h9wfyayVrD2MDKxUvyII
+         DWpBky0CrJA4vaNjKlWqV1HDS8UbNY6MyGrn3ReOnGpCBrYdF2lgu6UQZL7X4S5sHk+L
+         nJpg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@google.com header.s=20251104 header.b=veCbItQa;
+       spf=pass (google.com: domain of 3b6_uahukabyey3a7wdw70dfe-9ad0b7k2aa270.ya8@scholar-alerts.bounces.google.com designates 209.85.220.73 as permitted sender) smtp.mailfrom=3B6_UahUKABYEy3A7wDw70DFE-9AD0B7K2AA270.yA8@scholar-alerts.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <3B6_UahUKABYEy3A7wDw70DFE-9AD0B7K2AA270.yA8@scholar-alerts.bounces.google.com>
+Received: from mail-sor-f73.google.com (mail-sor-f73.google.com. [209.85.220.73])
+        by mx.google.com with SMTPS id d75a77b69052e-53649354d44sor53520941cf.4.2026.10.18.04.35.36
+        for <nakamoto.satoshi.b@gmail.com>
+        (Google Transport Security);
+        Sun, 18 Oct 2026 04:35:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 3b6_uahukabyey3a7wdw70dfe-9ad0b7k2aa270.ya8@scholar-alerts.bounces.google.com designates 209.85.220.73 as permitted sender) client-ip=209.85.220.73;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@google.com header.s=20251104 header.b=veCbItQa;
+       spf=pass (google.com: domain of 3b6_uahukabyey3a7wdw70dfe-9ad0b7k2aa270.ya8@scholar-alerts.bounces.google.com designates 209.85.220.73 as permitted sender) smtp.mailfrom=3B6_UahUKABYEy3A7wDw70DFE-9AD0B7K2AA270.yA8@scholar-alerts.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20251104; t=1792323336; x=1792928136; dara=google.com;
+        h=content-transfer-encoding:content-type:to:from:subject:message-id
+         :date:mime-version:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=DefKU06xK/j3UfGxsXGpO51Tq3Y9F/3AfvW4f/vMMXk=;
+        b=veCbItQaePbJnZQc5126OOccvRzLDmETeB4Zu37lLTZ8H4coLQfosNXtjcyHBeqytg
+         XfD1zwmC218oS/+16H7iqZsdCkhaCoeeIpcfnvyGxnIb0yy84VY4WJW3LHMGV3j7kO4f
+         kaQ2LgiHlb5GiIqLWjdRgQYF57Qzt5wi8gGmRgKyfAZ76ObbAyTaattqWi06VB/83XW9
+         kNKEhhaXh1YIq1rZOxubbAIjyK+z/3LrjCtKttzEwau9joYGvj4KSU96O9yHi+nHsbCX
+         Y3pphEU6JB7uGE2oiG73gG234LWgWbUeXgYEJHfxi7Y+4elRhF6jgaTAz9mxGQrGeQ9n
+         +b1g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1792323336; x=1792928136;
+        h=content-transfer-encoding:content-type:to:from:subject:message-id
+         :date:mime-version:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=DefKU06xK/j3UfGxsXGpO51Tq3Y9F/3AfvW4f/vMMXk=;
+        b=hqN4gcxBjl6uPYcHlh6tsYf5RuDo31xNXKulKZbWOQ1zrXsBCA25frH+77tJIhO97T
+         0BRVqD9OwjVQVdP2olSZCoKmvtXyMwPqYgmJxcPRLmI0W2z2SatK6eAWIp9QX2wysrRr
+         /7pr0dRdUYjN6qIyYFIvB8aWaaSy4hcdrzzfBNgGXXEpPXvmJ9FYVOsg64jkhHnSDEhp
+         Pesp5lI8Sj2ZKnkyiRZ0MwLpnkWvecmu725OPQ5mLdusIaL5XYr5LtllWOrj6oJcNQzx
+         h+EYhwFU8qAhnynzUVvHe32ExgQ43npShKfH/uLZQ1/KlPEfcKUD3r2SGFNXszrdskmK
+         gHRA==
+X-Gm-Message-State: AFq9FYKGIlAb88xbUBdfVs1YfjHoFt4FjCH1vYiSF77E1hNfxWKR7YgX
+	LTe3uKZ8JW/4Sch+jkoBz+GXLezGYML/FXj587djMjVZrIiyN6pudYDY2rVROLnZpzZkfsE=
+MIME-Version: 1.0
+X-Received: by 2002:ac8:5d0e:0:b0:530:8853:1be5 with SMTP id
+ d75a77b69052e-53645c32ef4mr76363721cf.10.1792323335942; Sun, 18 Oct 2026
+ 04:35:35 -0700 (PDT)
+Date: Sun, 18 Oct 2026 04:35:35 -0700
+Message-ID: <6ad4af07.e8c42582.f57d6.adfescholar@google.com>
+Subject: 10 new citations to your articles
+From: Google Scholar Alerts <scholaralerts-noreply@google.com>
+To: nakamoto.satoshi.b@gmail.com
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!doctype html><html xmlns=3D"http://www.w3.org/1999/xhtml" xmlns:o=3D"urn:=
+schemas-microsoft-com:office:office"><head><!--[if gte mso 9]><xml><o:Offic=
+eDocumentSettings><o:AllowPNG/><o:PixelsPerInch>96</o:PixelsPerInch></o:Off=
+iceDocumentSettings></xml><![endif]--><style>body{background-color:#fff}.gs=
+e_alrt_title{text-decoration:none}.gse_alrt_title:hover{text-decoration:und=
+erline}.gse_ra_btn{text-decoration:none}.gse_ra_btn:hover{text-decoration:u=
+nderline}.gse_ra_btn_lact:hover{background-color:#e8eff9 !important} @media=
+ screen and (max-width: 599px) {.gse_alrt_sni br{display:none;}}</style></h=
+ead><body><!--[if gte mso 9]><table cellpadding=3D"0" cellspacing=3D"0" bor=
+der=3D"0"><tr><td style=3D"width:600px"><![endif]--><div style=3D"font-fami=
+ly:arial,sans-serif;font-size:13px;line-height:16px;color:#222;width:100%;m=
+ax-width:600px"><h3 style=3D"font-weight:lighter;font-size:18px;line-height=
+:20px;"></h3><h3 style=3D"font-weight:normal;font-size:18px;line-height:20p=
+x;"></h3><h3 style=3D"font-weight:normal;margin:0;font-size:17px;line-heigh=
+t:20px;"><span style=3D"font-size:11px;font-weight:bold;color:#1a0dab;verti=
+cal-align:2px">[HTML]</span> <a href=3D"https://scholar.google.com/scholar_=
+url?url=3Dhttps://www.sciencedirect.com/science/article/pii/S14717727260004=
+24&amp;hl=3Den&amp;sa=3DX&amp;d=3D13014161047457243685&amp;ei=3DB6_UauWhNJH=
+uieoPwt_NKQ&amp;scisig=3DACTRDVH-atOKhdwgM_C0LM3Ua6tB&amp;oi=3Dscholaralrt&=
+amp;hist=3Dc8DZm3IAAAAJ:10739191307457540164:ACTRDVGYOUagxNn7-fPqN5cbRcJc&a=
+mp;html=3D&amp;pos=3D0&amp;folt=3Dcit&amp;fols=3D" class=3D"gse_alrt_title"=
+ style=3D"font-size:17px;color:#1a0dab;line-height:22px">Technology-mediate=
+d emergence of a competing logic in a mature field: The case of Bitcoin</a>=
+</h3><div style=3D"color:#006621;line-height:18px">S Kumar, D Slepniov, NG =
+MacKenzie=C2=A0- Information and Organization, 2026</div><div class=3D"gse_=
+alrt_sni" style=3D"line-height:17px">Emerging technologies, such as blockch=
+ain and artificial intelligence, are enabling <br>new configurations of pra=
+ctices, roles, and meaning systems within mature fields that <br>can disrup=
+t institutionalized field arrangements and alter the centrality of institut=
+ional <br>logics. Given the growing significance of this phenomenon, we aim=
+ to understand the <br>constitutive role of technology&#39;s materiality in=
+ such processes. Through a historical <br>processual analysis of Bitcoin, w=
+e propose a process model of disruptive institutional=C2=A0=E2=80=A6</div><=
+table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"padding:8px=
+ 0"><tr><td style=3D"line-height:18px;font-size:15px;padding-right:8px;" va=
+lign=3D"top">=E2=80=A2</td><td style=3D"line-height:18px;font-size:15px;mso=
+-padding-alt:8px 0 4px 0;"><span style=3D"mso-text-raise:4px;">Cites: =E2=
+=80=AABitcoin open source implementation of P2P currency=E2=80=AC&nbsp;&nbs=
+p;</span><a href=3D"https://scholar.google.com/citations?hl=3Den&amp;user=
+=3Dc8DZm3IAAAAJ#d=3Dgs_md_cita-d&amp;u=3D/citations%3Fview_op%3Dview_citati=
+on%26user%3Dc8DZm3IAAAAJ%26citation_for_view%3Dc8DZm3IAAAAJ:eQOLeE2rZwMC%26=
+hl%3Den" style=3D"padding:8px 0;"><img height=3D"18" width=3D"21" alt=3D"Ed=
+it" style=3D"vertical-align:top;" src=3D"https://scholar.google.com/intl/en=
+/scholar/images/1x/link-36.png"></a></td></tr></table><div style=3D"width:a=
+uto"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"paddi=
+ng-top:4px;"><tbody><tr><td style=3D"padding-right:4px;mso-padding-alt:4px =
+16px 0 0;"><a class=3D"gse_ra_btn" href=3D"https://scholar.google.com/citat=
+ions?hl=3Den&amp;update_op=3Demail_library_add&amp;info=3DJSJqS4WWm7QJ&amp;=
+citsig=3DAHwi3ncAAAAAbLXih5ZImoO7LG7H2gzTeAInI0I&amp;cited-by=3D" style=3D"=
+text-decoration:none;display:inline-block;line-height:17px;padding:4px 8px =
+4px 0;mso-padding-alt:0;color:#1a0dab;"><img  src=3D"https://scholar.google=
+.com/intl/en/scholar/images/1x/save2-32.png" border=3D"0" height=3D"17" wid=
+th=3D"17" style=3D"vertical-align:top;"><span style=3D"vertical-align:top;"=
+> Save</span></a></td><td style=3D"padding-right:4px;mso-padding-alt:4px 16=
+px 0 0;"><a class=3D" gse_ra_btn_lact" href=3D"https://scholar.google.com/s=
+cholar?q=3Dinfo:JSJqS4WWm7QJ:scholar.google.com/&amp;scioq=3D&amp;output=3D=
+scholaralrtaa&amp;hl=3Den&amp;hist=3Dc8DZm3IAAAAJ:10739191307457540164:ACTR=
+DVGYOUagxNn7-fPqN5cbRcJc&amp;html=3D&amp;pos=3D0&amp;folt=3Dcit&amp;fols=3D=
+" style=3D"text-decoration:none;display:inline-block;line-height:17px;paddi=
+ng:4px 8px;mso-padding-alt:0;color:#1a0dab;background-color:#f0f4f9;border-=
+radius:4px;padding-right:12px;"><img  src=3D"https://scholar.google.com/int=
+l/en/scholar/images/1x/ai_answers-32.png" border=3D"0" height=3D"17" width=
+=3D"17" style=3D"vertical-align:top;"><span style=3D"vertical-align:top;"> =
+Quick read</span></a></td></tr></tbody></table></div><br><h3 style=3D"font-=
+weight:normal;margin:0;font-size:17px;line-height:20px;"><span style=3D"fon=
+t-size:11px;font-weight:bold;color:#1a0dab;vertical-align:2px">[HTML]</span=
+> <a href=3D"https://scholar.google.com/scholar_url?url=3Dhttps://internati=
+onaljournalofdisasterriskmanagement.com/index.php/Vol1/article/view/257&amp=
+;hl=3Den&amp;sa=3DX&amp;d=3D1656859894030383259&amp;ei=3DB6_UauWhNJHuieoPwt=
+_NKQ&amp;scisig=3DACTRDVEtYwESwxmqDSf8mmfOHSD2&amp;oi=3Dscholaralrt&amp;his=
+t=3Dc8DZm3IAAAAJ:10739191307457540164:ACTRDVGYOUagxNn7-fPqN5cbRcJc&amp;html=
+=3D&amp;pos=3D1&amp;folt=3Dcit&amp;fols=3D" class=3D"gse_alrt_title" style=
+=3D"font-size:17px;color:#1a0dab;line-height:22px">Smart Contract-Driven Di=
+saster Relief: A Case Study on QR-Integrated Blockchain Systems in the 2023=
+ Kahramanmara=C5=9F Earthquake Recovery</a></h3><div style=3D"color:#006621=
+;line-height:18px">G Caybasi, G Ayvazoglu, I Peker=C2=A0- International Jou=
+rnal of Disaster Risk Management, 2026</div><div class=3D"gse_alrt_sni" sty=
+le=3D"line-height:17px">In the aftermath of the 2023 Kahramanmara=C5=9F ear=
+thquakes, this study examines how <br>blockchain technology might be incorp=
+orated into humanitarian aid efforts, with a <br>particular focus on an AFA=
+D-supervised container city in Hatay. To promote <br>accountability and tra=
+nsparency, the research field-tested a QR-integrated Ethereum-<br>based pro=
+totype for food-package distribution on 9 April 2025. The technology <br>cr=
+eated an immutable and independently verifiable record of documented=C2=A0=
+=E2=80=A6</div><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"padding:8px 0"><tr><td style=3D"line-height:18px;font-size:15px;paddin=
+g-right:8px;" valign=3D"top">=E2=80=A2</td><td style=3D"line-height:18px;fo=
+nt-size:15px;mso-padding-alt:8px 0 4px 0;"><span style=3D"mso-text-raise:4p=
+x;">Cites: =E2=80=AABitcoin: A Peer-to-Peer Electronic Cash System=E2=80=AC=
+&nbsp;&nbsp;</span><a href=3D"https://scholar.google.com/citations?hl=3Den&=
+amp;user=3Dc8DZm3IAAAAJ#d=3Dgs_md_cita-d&amp;u=3D/citations%3Fview_op%3Dvie=
+w_citation%26user%3Dc8DZm3IAAAAJ%26citation_for_view%3Dc8DZm3IAAAAJ:aqlVkmm=
+33-oC%26hl%3Den" style=3D"padding:8px 0;"><img height=3D"18" width=3D"21" a=
+lt=3D"Edit" style=3D"vertical-align:top;" src=3D"https://scholar.google.com=
+/intl/en/scholar/images/1x/link-36.png"></a></td></tr></table><div style=3D=
+"width:auto"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=
+=3D"padding-top:4px;"><tbody><tr><td style=3D"padding-right:4px;mso-padding=
+-alt:4px 16px 0 0;"><a class=3D"gse_ra_btn" href=3D"https://scholar.google.=
+com/citations?hl=3Den&amp;update_op=3Demail_library_add&amp;info=3Dm7hFkktZ=
+_hYJ&amp;citsig=3DAHwi3ncAAAAAbLXih29IhgazFcYfuRGCLF8QPZU&amp;cited-by=3D" =
+style=3D"text-decoration:none;display:inline-block;line-height:17px;padding=
+:4px 8px 4px 0;mso-padding-alt:0;color:#1a0dab;"><img  src=3D"https://schol=
+ar.google.com/intl/en/scholar/images/1x/save2-32.png" border=3D"0" height=
+=3D"17" width=3D"17" style=3D"vertical-align:top;"><span style=3D"vertical-=
+align:top;"> Save</span></a></td></tr></tbody></table></div><br><h3 style=
+=3D"font-weight:normal;margin:0;font-size:17px;line-height:20px;"><a href=
+=3D"https://scholar.google.com/scholar_url?url=3Dhttps://link.springer.com/=
+article/10.1007/s11036-026-02507-7&amp;hl=3Den&amp;sa=3DX&amp;d=3D970708452=
+8305627228&amp;ei=3DB6_UauWhNJHuieoPwt_NKQ&amp;scisig=3DACTRDVG5ldYdaIBp08S=
+PNFSO-1QJ&amp;oi=3Dscholaralrt&amp;hist=3Dc8DZm3IAAAAJ:10739191307457540164=
+:ACTRDVGYOUagxNn7-fPqN5cbRcJc&amp;html=3D&amp;pos=3D2&amp;folt=3Dcit&amp;fo=
+ls=3D" class=3D"gse_alrt_title" style=3D"font-size:17px;color:#1a0dab;line-=
+height:22px">BCFW: An Uncertainty-Aware Consensus Firewall for PoA Blockcha=
+ins</a></h3><div style=3D"color:#006621;line-height:18px">Z Zhu, W Li=C2=A0=
+- Mobile Networks and Applications, 2026</div><div class=3D"gse_alrt_sni" s=
+tyle=3D"line-height:17px">Existing security solutions often suffer from man=
+y practical issues in a blockchain <br>environment such as generalization a=
+nd actionability. This paper presents BCFW, a <br>blockchain consensus fire=
+wall that couples uncertainty-aware intrusion detection <br>with on-chain g=
+overnance for Proof-of-Authority networks. We design an FT-<br>Transformer =
+tailored to tabular flow data and augment it with an aleatoric uncertainty =
+<br>head to make predictions actionable under operational risk. Validated o=
+n the CIC=C2=A0=E2=80=A6</div><table cellpadding=3D"0" cellspacing=3D"0" bo=
+rder=3D"0" style=3D"padding:8px 0"><tr><td style=3D"line-height:18px;font-s=
+ize:15px;padding-right:8px;" valign=3D"top">=E2=80=A2</td><td style=3D"line=
+-height:18px;font-size:15px;mso-padding-alt:8px 0 4px 0;"><span style=3D"ms=
+o-text-raise:4px;">Cites: =E2=80=AABitcoin: A peer-to-peer electronic cash =
+system. 2008=E2=80=AC&nbsp;&nbsp;</span><a href=3D"https://scholar.google.c=
+om/citations?hl=3Den&amp;user=3Dc8DZm3IAAAAJ#d=3Dgs_md_cita-d&amp;u=3D/cita=
+tions%3Fview_op%3Dview_citation%26user%3Dc8DZm3IAAAAJ%26citation_for_view%3=
+Dc8DZm3IAAAAJ:KxtntwgDAa4C%26hl%3Den" style=3D"padding:8px 0;"><img height=
+=3D"18" width=3D"21" alt=3D"Edit" style=3D"vertical-align:top;" src=3D"http=
+s://scholar.google.com/intl/en/scholar/images/1x/link-36.png"></a></td></tr=
+></table><div style=3D"width:auto"><table cellpadding=3D"0" cellspacing=3D"=
+0" border=3D"0" style=3D"padding-top:4px;"><tbody><tr><td style=3D"padding-=
+right:4px;mso-padding-alt:4px 16px 0 0;"><a class=3D"gse_ra_btn" href=3D"ht=
+tps://scholar.google.com/citations?hl=3Den&amp;update_op=3Demail_library_ad=
+d&amp;info=3DXOBYuvJ9toYJ&amp;citsig=3DAHwi3ncAAAAAbLXih136_5lHK0XcG_nQ4jwN=
+I-A&amp;cited-by=3D" style=3D"text-decoration:none;display:inline-block;lin=
+e-height:17px;padding:4px 8px 4px 0;mso-padding-alt:0;color:#1a0dab;"><img =
+ src=3D"https://scholar.google.com/intl/en/scholar/images/1x/save2-32.png" =
+border=3D"0" height=3D"17" width=3D"17" style=3D"vertical-align:top;"><span=
+ style=3D"vertical-align:top;"> Save</span></a></td></tr></tbody></table></=
+div><br><h3 style=3D"font-weight:normal;margin:0;font-size:17px;line-height=
+:20px;"><span style=3D"font-size:11px;font-weight:bold;color:#1a0dab;vertic=
+al-align:2px">[PDF]</span> <a href=3D"https://scholar.google.com/scholar_ur=
+l?url=3Dhttps://eprint.iacr.org/2026/2466.pdf&amp;hl=3Den&amp;sa=3DX&amp;d=
+=3D14544708771751572382&amp;ei=3DB6_UauWhNJHuieoPwt_NKQ&amp;scisig=3DACTRDV=
+Glesd02m1IEd37zOxDjYV7&amp;oi=3Dscholaralrt&amp;hist=3Dc8DZm3IAAAAJ:1073919=
+1307457540164:ACTRDVGYOUagxNn7-fPqN5cbRcJc&amp;html=3D&amp;pos=3D3&amp;folt=
+=3Dcit&amp;fols=3D" class=3D"gse_alrt_title" style=3D"font-size:17px;color:=
+#1a0dab;line-height:22px">Trustless Bitcoin Vaults</a></h3><div style=3D"co=
+lor:#006621;line-height:18px">L Aumayr, X Dong, R Han, S Sridhar, D Tse, N =
+Vanjani=C2=A0- Cryptology ePrint Archive, 2026</div><div class=3D"gse_alrt_=
+sni" style=3D"line-height:17px">Bitcoin (BTC) is the largest crypto asset, =
+yet the Bitcoin blockchain offers few <br>applications in which BTC can be =
+used. A standard approach to make BTC useful is <br>bridging: BTC is deposi=
+ted on the Bitcoin chain and a wrapped asset is minted on a <br>chain such =
+as Ethereum, where it can be used in smart contract applications. <br>Unfor=
+tunately, all Bitcoin bridges to date require trust assumptions on a centra=
+lized <br>party or a committee running the bridge to enable withdrawals of =
+the deposited BTC=C2=A0=E2=80=A6</div><table cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0" style=3D"padding:8px 0"><tr><td style=3D"line-height:18=
+px;font-size:15px;padding-right:8px;" valign=3D"top">=E2=80=A2</td><td styl=
+e=3D"line-height:18px;font-size:15px;mso-padding-alt:8px 0 4px 0;"><span st=
+yle=3D"mso-text-raise:4px;">Cites: =E2=80=AABitcoin open source implementat=
+ion of P2P currency=E2=80=AC&nbsp;&nbsp;</span><a href=3D"https://scholar.g=
+oogle.com/citations?hl=3Den&amp;user=3Dc8DZm3IAAAAJ#d=3Dgs_md_cita-d&amp;u=
+=3D/citations%3Fview_op%3Dview_citation%26user%3Dc8DZm3IAAAAJ%26citation_fo=
+r_view%3Dc8DZm3IAAAAJ:eQOLeE2rZwMC%26hl%3Den" style=3D"padding:8px 0;"><img=
+ height=3D"18" width=3D"21" alt=3D"Edit" style=3D"vertical-align:top;" src=
+=3D"https://scholar.google.com/intl/en/scholar/images/1x/link-36.png"></a><=
+/td></tr></table><div style=3D"width:auto"><table cellpadding=3D"0" cellspa=
+cing=3D"0" border=3D"0" style=3D"padding-top:4px;"><tbody><tr><td style=3D"=
+padding-right:4px;mso-padding-alt:4px 16px 0 0;"><a class=3D"gse_ra_btn" hr=
+ef=3D"https://scholar.google.com/citations?hl=3Den&amp;update_op=3Demail_li=
+brary_add&amp;info=3DnrPCFZEv2ckJ&amp;citsig=3DAHwi3ncAAAAAbLXihxHfYIuqEOKP=
+QKyaVTjEeaE&amp;cited-by=3D" style=3D"text-decoration:none;display:inline-b=
+lock;line-height:17px;padding:4px 8px 4px 0;mso-padding-alt:0;color:#1a0dab=
+;"><img  src=3D"https://scholar.google.com/intl/en/scholar/images/1x/save2-=
+32.png" border=3D"0" height=3D"17" width=3D"17" style=3D"vertical-align:top=
+;"><span style=3D"vertical-align:top;"> Save</span></a></td><td style=3D"pa=
+dding-right:4px;mso-padding-alt:4px 16px 0 0;"><a class=3D" gse_ra_btn_lact=
+" href=3D"https://scholar.google.com/scholar?q=3Dinfo:nrPCFZEv2ckJ:scholar.=
+google.com/&amp;scioq=3D&amp;output=3Dscholaralrtaa&amp;hl=3Den&amp;hist=3D=
+c8DZm3IAAAAJ:10739191307457540164:ACTRDVGYOUagxNn7-fPqN5cbRcJc&amp;html=3D&=
+amp;pos=3D3&amp;folt=3Dcit&amp;fols=3D" style=3D"text-decoration:none;displ=
+ay:inline-block;line-height:17px;padding:4px 8px;mso-padding-alt:0;color:#1=
+a0dab;background-color:#f0f4f9;border-radius:4px;padding-right:12px;"><img =
+ src=3D"https://scholar.google.com/intl/en/scholar/images/1x/ai_answers-32.=
+png" border=3D"0" height=3D"17" width=3D"17" style=3D"vertical-align:top;">=
+<span style=3D"vertical-align:top;"> Quick read</span></a></td></tr></tbody=
+></table></div><br><h3 style=3D"font-weight:normal;margin:0;font-size:17px;=
+line-height:20px;"><a href=3D"https://scholar.google.com/scholar_url?url=3D=
+https://dl.acm.org/doi/abs/10.1002/ett.70493&amp;hl=3Den&amp;sa=3DX&amp;d=
+=3D16045318290817620952&amp;ei=3DB6_UauWhNJHuieoPwt_NKQ&amp;scisig=3DACTRDV=
+HIS46OyxQLVLr2iivOO_zK&amp;oi=3Dscholaralrt&amp;hist=3Dc8DZm3IAAAAJ:1073919=
+1307457540164:ACTRDVGYOUagxNn7-fPqN5cbRcJc&amp;html=3D&amp;pos=3D4&amp;folt=
+=3Dcit&amp;fols=3D" class=3D"gse_alrt_title" style=3D"font-size:17px;color:=
+#1a0dab;line-height:22px">Quantchaindoc:: Integrating Blockchain and Quantu=
+m Cryptography to Enhance Digital Document Security in Smart Cities</a></h3=
+><div style=3D"color:#006621;line-height:18px">S Pandey, V Rishiwal, R Chau=
+dhry, M Khari, M Yadav=E2=80=A6=C2=A0- Transactions on Emerging=C2=A0=E2=80=
+=A6, 2026</div><div class=3D"gse_alrt_sni" style=3D"line-height:17px">Digit=
+al documents have been widely used on several domains and stored on digital=
+ <br>platforms so that documents can be accessed from anywhere but unauthor=
+ized <br>access to the digital documents may lead to fraudulent activities.=
+ Various frameworks <br>integrated with advanced technology and cryptograph=
+ic techniques are proposed to <br>enhance the security of digital documents=
+. This paper proposes Blockchain <br>Technology and Quantum Cryptography in=
+tegrated framework Quantchaindoc to=C2=A0=E2=80=A6</div><table cellpadding=
+=3D"0" cellspacing=3D"0" border=3D"0" style=3D"padding:8px 0"><tr><td style=
+=3D"line-height:18px;font-size:15px;padding-right:8px;" valign=3D"top">=E2=
+=80=A2</td><td style=3D"line-height:18px;font-size:15px;mso-padding-alt:8px=
+ 0 4px 0;"><span style=3D"mso-text-raise:4px;">Cites: =E2=80=AABitcoin: A P=
+eer-to-Peer Electronic Cash System=E2=80=AC&nbsp;&nbsp;</span><a href=3D"ht=
+tps://scholar.google.com/citations?hl=3Den&amp;user=3Dc8DZm3IAAAAJ#d=3Dgs_m=
+d_cita-d&amp;u=3D/citations%3Fview_op%3Dview_citation%26user%3Dc8DZm3IAAAAJ=
+%26citation_for_view%3Dc8DZm3IAAAAJ:aqlVkmm33-oC%26hl%3Den" style=3D"paddin=
+g:8px 0;"><img height=3D"18" width=3D"21" alt=3D"Edit" style=3D"vertical-al=
+ign:top;" src=3D"https://scholar.google.com/intl/en/scholar/images/1x/link-=
+36.png"></a></td></tr></table><div style=3D"width:auto"><table cellpadding=
+=3D"0" cellspacing=3D"0" border=3D"0" style=3D"padding-top:4px;"><tbody><tr=
+><td style=3D"padding-right:4px;mso-padding-alt:4px 16px 0 0;"><a class=3D"=
+gse_ra_btn" href=3D"https://scholar.google.com/citations?hl=3Den&amp;update=
+_op=3Demail_library_add&amp;info=3D2BtDSPlrrN4J&amp;citsig=3DAHwi3ncAAAAAbL=
+XihxscpTmPQSpK9BExv8vclWk&amp;cited-by=3D" style=3D"text-decoration:none;di=
+splay:inline-block;line-height:17px;padding:4px 8px 4px 0;mso-padding-alt:0=
+;color:#1a0dab;"><img  src=3D"https://scholar.google.com/intl/en/scholar/im=
+ages/1x/save2-32.png" border=3D"0" height=3D"17" width=3D"17" style=3D"vert=
+ical-align:top;"><span style=3D"vertical-align:top;"> Save</span></a></td><=
+/tr></tbody></table></div><br><h3 style=3D"font-weight:normal;margin:0;font=
+-size:17px;line-height:20px;"><span style=3D"font-size:11px;font-weight:bol=
+d;color:#1a0dab;vertical-align:2px">[PDF]</span> <a href=3D"https://scholar=
+.google.com/scholar_url?url=3Dhttps://openaccess.city.ac.uk/id/eprint/38501=
+/1/Sokoto%2520thesis%25202026%2520PDF-A.pdf&amp;hl=3Den&amp;sa=3DX&amp;d=3D=
+11373804047699426916&amp;ei=3DB6_UauWhNJHuieoPwt_NKQ&amp;scisig=3DACTRDVHF5=
+cSh-cbaE1Upo4PWEJVj&amp;oi=3Dscholaralrt&amp;hist=3Dc8DZm3IAAAAJ:1073919130=
+7457540164:ACTRDVGYOUagxNn7-fPqN5cbRcJc&amp;html=3D&amp;pos=3D5&amp;folt=3D=
+cit&amp;fols=3D" class=3D"gse_alrt_title" style=3D"font-size:17px;color:#1a=
+0dab;line-height:22px">Scalability, security, and moderation in decentralis=
+ed systems</a></h3><div style=3D"color:#006621;line-height:18px">S Sokoto -=
+ 2026</div><div class=3D"gse_alrt_sni" style=3D"line-height:17px">The Inter=
+net remains decentralised at its core, with independently operated networks=
+ <br>interconnected through open protocols. However, many of the services b=
+uilt on top of <br>it have become concentrated among a small number of prov=
+iders, from hosting and <br>content delivery to social networking. This giv=
+es them control over content <br>distribution, moderation, and data access.=
+ Decentralised systems offer an alternative. <br>Historically, however, the=
+y have struggled to moderate abuse without a central=C2=A0=E2=80=A6</div><t=
+able cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"padding:8px =
+0"><tr><td style=3D"line-height:18px;font-size:15px;padding-right:8px;" val=
+ign=3D"top">=E2=80=A2</td><td style=3D"line-height:18px;font-size:15px;mso-=
+padding-alt:8px 0 4px 0;"><span style=3D"mso-text-raise:4px;">Cites: =E2=80=
+=AABitcoin: A Peer-to-Peer Electronic Cash System=E2=80=AC&nbsp;&nbsp;</spa=
+n><a href=3D"https://scholar.google.com/citations?hl=3Den&amp;user=3Dc8DZm3=
+IAAAAJ#d=3Dgs_md_cita-d&amp;u=3D/citations%3Fview_op%3Dview_citation%26user=
+%3Dc8DZm3IAAAAJ%26citation_for_view%3Dc8DZm3IAAAAJ:aqlVkmm33-oC%26hl%3Den" =
+style=3D"padding:8px 0;"><img height=3D"18" width=3D"21" alt=3D"Edit" style=
+=3D"vertical-align:top;" src=3D"https://scholar.google.com/intl/en/scholar/=
+images/1x/link-36.png"></a></td></tr></table><div style=3D"width:auto"><tab=
+le cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"padding-top:4p=
+x;"><tbody><tr><td style=3D"padding-right:4px;mso-padding-alt:4px 16px 0 0;=
+"><a class=3D"gse_ra_btn" href=3D"https://scholar.google.com/citations?hl=
+=3Den&amp;update_op=3Demail_library_add&amp;info=3DZD4GOIXe150J&amp;citsig=
+=3DAHwi3ncAAAAAbLXih6pZAYb3HBRTSKg59B0y1GU&amp;cited-by=3D" style=3D"text-d=
+ecoration:none;display:inline-block;line-height:17px;padding:4px 8px 4px 0;=
+mso-padding-alt:0;color:#1a0dab;"><img  src=3D"https://scholar.google.com/i=
+ntl/en/scholar/images/1x/save2-32.png" border=3D"0" height=3D"17" width=3D"=
+17" style=3D"vertical-align:top;"><span style=3D"vertical-align:top;"> Save=
+</span></a></td><td style=3D"padding-right:4px;mso-padding-alt:4px 16px 0 0=
+;"><a class=3D" gse_ra_btn_lact" href=3D"https://scholar.google.com/scholar=
+?q=3Dinfo:ZD4GOIXe150J:scholar.google.com/&amp;scioq=3D&amp;output=3Dschola=
+ralrtaa&amp;hl=3Den&amp;hist=3Dc8DZm3IAAAAJ:10739191307457540164:ACTRDVGYOU=
+agxNn7-fPqN5cbRcJc&amp;html=3D&amp;pos=3D5&amp;folt=3Dcit&amp;fols=3D" styl=
+e=3D"text-decoration:none;display:inline-block;line-height:17px;padding:4px=
+ 8px;mso-padding-alt:0;color:#1a0dab;background-color:#f0f4f9;border-radius=
+:4px;padding-right:12px;"><img  src=3D"https://scholar.google.com/intl/en/s=
+cholar/images/1x/ai_answers-32.png" border=3D"0" height=3D"17" width=3D"17"=
+ style=3D"vertical-align:top;"><span style=3D"vertical-align:top;"> Quick r=
+ead</span></a></td></tr></tbody></table></div><br><h3 style=3D"font-weight:=
+normal;margin:0;font-size:17px;line-height:20px;"><span style=3D"font-size:=
+11px;font-weight:bold;color:#1a0dab;vertical-align:2px">[PDF]</span> <a hre=
+f=3D"https://scholar.google.com/scholar_url?url=3Dhttps://economyandsociety=
+.in.ua/index.php/journal/article/download/8473/8469&amp;hl=3Den&amp;sa=3DX&=
+amp;d=3D9202418117076845851&amp;ei=3DB6_UauWhNJHuieoPwt_NKQ&amp;scisig=3DAC=
+TRDVHjj6GtcjdB8a4tfoJbHr2L&amp;oi=3Dscholaralrt&amp;hist=3Dc8DZm3IAAAAJ:107=
+39191307457540164:ACTRDVGYOUagxNn7-fPqN5cbRcJc&amp;html=3D&amp;pos=3D6&amp;=
+folt=3Dcit&amp;fols=3D" class=3D"gse_alrt_title" style=3D"font-size:17px;co=
+lor:#1a0dab;line-height:22px">=D0=9A=D0=9E=D0=9D=D0=A6=D0=95=D0=9F=D0=A2=D0=
+=A3=D0=90=D0=9B=D0=86=D0=97=D0=90=D0=A6=D0=86=D0=AF =D0=9A=D0=A0=D0=98=D0=
+=9F=D0=A2=D0=9E=D0=92=D0=90=D0=9B=D0=AE=D0=A2=D0=98 =D0=AF=D0=9A =D0=86=D0=
+=9D=D0=9D=D0=9E=D0=92=D0=90=D0=A6=D0=86=D0=99=D0=9D=D0=9E=D0=93=D0=9E =D0=
+=9C=D0=90=D0=A0=D0=9A=D0=95=D0=A2=D0=98=D0=9D=D0=93=D0=9E=D0=92=D0=9E=D0=93=
+=D0=9E =D0=9F=D0=A0=D0=9E=D0=94=D0=A3=D0=9A=D0=A2=D0=A3 =D0=A2=D0=90 =D0=9A=
+=D0=9B=D0=90=D0=A1=D0=98=D0=A4=D0=86=D0=9A=D0=90=D0=A6=D0=86=D0=AF =D0=91=
+=D0=90=D0=A0&#39;=D0=84=D0=A0=D0=86=D0=92 =D0=87=D0=87 =D0=A1=D0=9F=D0=9E=
+=D0=96=D0=98=D0=92=D0=A7=D0=9E=D0=93=D0=9E =D0=9F=D0=A0=D0=98=D0=99=D0=9D=
+=D0=AF=D0=A2=D0=A2=D0=AF =D0=92=C2=A0=E2=80=A6</a></h3><div style=3D"color:=
+#006621;line-height:18px">=D0=A1 =D0=97=D1=83=D0=B1=D0=B5=D1=86=D1=8C, =D0=
+=9C =D0=A2=D0=B0=D1=80=D0=B0=D1=81=D1=8E=D0=BA=C2=A0- =D0=95=D0=BA=D0=BE=D0=
+=BD=D0=BE=D0=BC=D1=96=D0=BA=D0=B0 =D1=82=D0=B0 =D1=81=D1=83=D1=81=D0=BF=D1=
+=96=D0=BB=D1=8C=D1=81=D1=82=D0=B2=D0=BE, 2026</div><div class=3D"gse_alrt_s=
+ni" style=3D"line-height:17px">=D0=90=D0=BD=D0=BE=D1=82=D0=B0=D1=86=D1=96=
+=D1=8F =D0=A1=D1=82=D0=B0=D1=82=D1=82=D1=8F =D0=BF=D1=80=D0=B8=D1=81=D0=B2=
+=D1=8F=D1=87=D0=B5=D0=BD=D0=B0 =D0=BA=D0=BE=D0=BD=D1=86=D0=B5=D0=BF=D1=82=
+=D1=83=D0=B0=D0=BB=D1=96=D0=B7=D0=B0=D1=86=D1=96=D1=97 =D0=BA=D1=80=D0=B8=
+=D0=BF=D1=82=D0=BE=D0=B2=D0=B0=D0=BB=D1=8E=D1=82=D0=B8 =D1=8F=D0=BA =D1=96=
+=D0=BD=D0=BD=D0=BE=D0=B2=D0=B0=D1=86=D1=96=D0=B9=D0=BD=D0=BE=D0=B3=D0=BE <b=
+r>=D0=BC=D0=B0=D1=80=D0=BA=D0=B5=D1=82=D0=B8=D0=BD=D0=B3=D0=BE=D0=B2=D0=BE=
+=D0=B3=D0=BE =D0=BF=D1=80=D0=BE=D0=B4=D1=83=D0=BA=D1=82=D1=83 =D1=82=D0=B0 =
+=D1=80=D0=BE=D0=B7=D1=80=D0=BE=D0=B1=D1=86=D1=96 =D0=BA=D0=BB=D0=B0=D1=81=
+=D0=B8=D1=84=D1=96=D0=BA=D0=B0=D1=86=D1=96=D1=97 =D0=B1=D0=B0=D1=80&#39;=D1=
+=94=D1=80=D1=96=D0=B2 =D1=97=D1=97 =D1=81=D0=BF=D0=BE=D0=B6=D0=B8=D0=B2=D1=
+=87=D0=BE=D0=B3=D0=BE <br>=D0=BF=D1=80=D0=B8=D0=B9=D0=BD=D1=8F=D1=82=D1=82=
+=D1=8F =D1=83 B2C-=D1=81=D0=B5=D0=B3=D0=BC=D0=B5=D0=BD=D1=82=D1=96 =D1=80=
+=D0=BE=D0=B7=D0=B4=D1=80=D1=96=D0=B1=D0=BD=D0=B8=D1=85 =D0=BF=D0=BB=D0=B0=
+=D1=82=D0=B5=D0=B6=D1=96=D0=B2. =D0=9D=D0=B0 =D0=BE=D1=81=D0=BD=D0=BE=D0=B2=
+=D1=96 =D0=B1=D0=B0=D0=B3=D0=B0=D1=82=D0=BE=D1=80=D1=96=D0=B2=D0=BD=D0=B5=
+=D0=B2=D0=BE=D1=97 =D0=BC=D0=BE=D0=B4=D0=B5=D0=BB=D1=96 <br>=D0=BC=D0=B0=D1=
+=80=D0=BA=D0=B5=D1=82=D0=B8=D0=BD=D0=B3=D0=BE=D0=B2=D0=BE=D0=B3=D0=BE =D0=
+=BF=D1=80=D0=BE=D0=B4=D1=83=D0=BA=D1=82=D1=83 =D0=B7=D0=B4=D1=96=D0=B9=D1=
+=81=D0=BD=D0=B5=D0=BD=D0=BE =D0=B4=D0=B5=D0=BA=D0=BE=D0=BC=D0=BF=D0=BE=D0=
+=B7=D0=B8=D1=86=D1=96=D1=8E =D0=BA=D1=80=D0=B8=D0=BF=D1=82=D0=BE=D0=B2=D0=
+=B0=D0=BB=D1=8E=D1=82=D0=B8 =D0=BD=D0=B0 =D1=80=D0=BE=D0=B4=D0=BE=D0=B2=D0=
+=B8=D0=B9, <br>=D1=80=D0=B5=D0=B0=D0=BB=D1=8C=D0=BD=D0=B8=D0=B9 =D1=82=D0=
+=B0 =D1=80=D0=BE=D0=B7=D1=88=D0=B8=D1=80=D0=B5=D0=BD=D0=B8=D0=B9 =D1=80=D1=
+=96=D0=B2=D0=BD=D1=96 =D1=86=D1=96=D0=BD=D0=BD=D0=BE=D1=81=D1=82=D1=96. =D0=
+=A1=D0=BF=D0=B8=D1=80=D0=B0=D1=8E=D1=87=D0=B8=D1=81=D1=8C =D0=BD=D0=B0 =D0=
+=BC=D0=BE=D0=B4=D0=B5=D0=BB=D1=8C =D0=B4=D0=BE=D0=B2=D1=96=D1=80=D0=B8 <br>=
+CRYPTOTRUST 2 =D1=82=D0=B0 =D1=82=D0=B5=D0=BE=D1=80=D1=96=D1=8E =D0=B4=D0=
+=B8=D1=84=D1=83=D0=B7=D1=96=D1=97 =D1=96=D0=BD=D0=BD=D0=BE=D0=B2=D0=B0=D1=
+=86=D1=96=D0=B9 =D0=95. =D0=A0=D0=BE=D0=B4=D0=B6=D0=B5=D1=80=D1=81=D0=B0, =
+=D1=81=D0=B8=D1=81=D1=82=D0=B5=D0=BC=D0=B0=D1=82=D0=B8=D0=B7=D0=BE=D0=B2=D0=
+=B0=D0=BD=D0=BE=C2=A0=E2=80=A6</div><table cellpadding=3D"0" cellspacing=3D=
+"0" border=3D"0" style=3D"padding:8px 0"><tr><td style=3D"line-height:18px;=
+font-size:15px;padding-right:8px;" valign=3D"top">=E2=80=A2</td><td style=
+=3D"line-height:18px;font-size:15px;mso-padding-alt:8px 0 4px 0;"><span sty=
+le=3D"mso-text-raise:4px;">Cites: =E2=80=AABitcoin: A peer-to-peer electron=
+ic cash system. 2008=E2=80=AC&nbsp;&nbsp;</span><a href=3D"https://scholar.=
+google.com/citations?hl=3Den&amp;user=3Dc8DZm3IAAAAJ#d=3Dgs_md_cita-d&amp;u=
+=3D/citations%3Fview_op%3Dview_citation%26user%3Dc8DZm3IAAAAJ%26citation_fo=
+r_view%3Dc8DZm3IAAAAJ:KxtntwgDAa4C%26hl%3Den" style=3D"padding:8px 0;"><img=
+ height=3D"18" width=3D"21" alt=3D"Edit" style=3D"vertical-align:top;" src=
+=3D"https://scholar.google.com/intl/en/scholar/images/1x/link-36.png"></a><=
+/td></tr></table><div style=3D"width:auto"><table cellpadding=3D"0" cellspa=
+cing=3D"0" border=3D"0" style=3D"padding-top:4px;"><tbody><tr><td style=3D"=
+padding-right:4px;mso-padding-alt:4px 16px 0 0;"><a class=3D"gse_ra_btn" hr=
+ef=3D"https://scholar.google.com/citations?hl=3Den&amp;update_op=3Demail_li=
+brary_add&amp;info=3DGwX8XoWOtX8J&amp;citsig=3DAHwi3ncAAAAAbLXih3V-xTohrOX1=
+RpVXJUXbHMY&amp;cited-by=3D" style=3D"text-decoration:none;display:inline-b=
+lock;line-height:17px;padding:4px 8px 4px 0;mso-padding-alt:0;color:#1a0dab=
+;"><img  src=3D"https://scholar.google.com/intl/en/scholar/images/1x/save2-=
+32.png" border=3D"0" height=3D"17" width=3D"17" style=3D"vertical-align:top=
+;"><span style=3D"vertical-align:top;"> Save</span></a></td><td style=3D"pa=
+dding-right:4px;mso-padding-alt:4px 16px 0 0;"><a class=3D" gse_ra_btn_lact=
+" href=3D"https://scholar.google.com/scholar?q=3Dinfo:GwX8XoWOtX8J:scholar.=
+google.com/&amp;scioq=3D&amp;output=3Dscholaralrtaa&amp;hl=3Den&amp;hist=3D=
+c8DZm3IAAAAJ:10739191307457540164:ACTRDVGYOUagxNn7-fPqN5cbRcJc&amp;html=3D&=
+amp;pos=3D6&amp;folt=3Dcit&amp;fols=3D" style=3D"text-decoration:none;displ=
+ay:inline-block;line-height:17px;padding:4px 8px;mso-padding-alt:0;color:#1=
+a0dab;background-color:#f0f4f9;border-radius:4px;padding-right:12px;"><img =
+ src=3D"https://scholar.google.com/intl/en/scholar/images/1x/ai_answers-32.=
+png" border=3D"0" height=3D"17" width=3D"17" style=3D"vertical-align:top;">=
+<span style=3D"vertical-align:top;"> Quick read</span></a></td></tr></tbody=
+></table></div><br><h3 style=3D"font-weight:normal;margin:0;font-size:17px;=
+line-height:20px;"><a href=3D"https://scholar.google.com/scholar_url?url=3D=
+https://ieeexplore.ieee.org/abstract/document/11722213/&amp;hl=3Den&amp;sa=
+=3DX&amp;d=3D15090735608923443195&amp;ei=3DB6_UauWhNJHuieoPwt_NKQ&amp;scisi=
+g=3DACTRDVE5Vr2-XT_hg-DS--nRKb1L&amp;oi=3Dscholaralrt&amp;hist=3Dc8DZm3IAAA=
+AJ:10739191307457540164:ACTRDVGYOUagxNn7-fPqN5cbRcJc&amp;html=3D&amp;pos=3D=
+7&amp;folt=3Dcit&amp;fols=3D" class=3D"gse_alrt_title" style=3D"font-size:1=
+7px;color:#1a0dab;line-height:22px">Cropcare: A MultilingualAI=E2=80=93IoT =
+Framework for Intelligent and Sustainable Precision Agriculture</a></h3><di=
+v style=3D"color:#006621;line-height:18px">N Susithra, K Subhana, KS Vishal=
+kanth, V Tharun=C2=A0- 2026 International Conference on=C2=A0=E2=80=A6, 202=
+6</div><div class=3D"gse_alrt_sni" style=3D"line-height:17px">Agriculture f=
+aces challenges such as climate variability, inefficient irrigation, crop <=
+br>diseases, soil degradation, and limited access to intelligent farming su=
+pport. This <br>paper presents CROPCARE, an AI-driven smart farming framewo=
+rk that integrates <br>Internet of Things (IoT), Machine Learning (ML), Dee=
+p Learning (DL), and cloud-<br>assisted automation into a unified platform =
+for sustainable precision agriculture. The <br>system employs an ESP32-base=
+d sensing layer with soil moisture, temperature, and=C2=A0=E2=80=A6</div><t=
+able cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"padding:8px =
+0"><tr><td style=3D"line-height:18px;font-size:15px;padding-right:8px;" val=
+ign=3D"top">=E2=80=A2</td><td style=3D"line-height:18px;font-size:15px;mso-=
+padding-alt:8px 0 4px 0;"><span style=3D"mso-text-raise:4px;">Cites: =E2=80=
+=AABitcoin: A Peer-to-Peer Electronic Cash System=E2=80=AC&nbsp;&nbsp;</spa=
+n><a href=3D"https://scholar.google.com/citations?hl=3Den&amp;user=3Dc8DZm3=
+IAAAAJ#d=3Dgs_md_cita-d&amp;u=3D/citations%3Fview_op%3Dview_citation%26user=
+%3Dc8DZm3IAAAAJ%26citation_for_view%3Dc8DZm3IAAAAJ:aqlVkmm33-oC%26hl%3Den" =
+style=3D"padding:8px 0;"><img height=3D"18" width=3D"21" alt=3D"Edit" style=
+=3D"vertical-align:top;" src=3D"https://scholar.google.com/intl/en/scholar/=
+images/1x/link-36.png"></a></td></tr></table><div style=3D"width:auto"><tab=
+le cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"padding-top:4p=
+x;"><tbody><tr><td style=3D"padding-right:4px;mso-padding-alt:4px 16px 0 0;=
+"><a class=3D"gse_ra_btn" href=3D"https://scholar.google.com/citations?hl=
+=3Den&amp;update_op=3Demail_library_add&amp;info=3D-084CRUQbdEJ&amp;citsig=
+=3DAHwi3ncAAAAAbLXih05cSJj5JzE_O3FH3mG0KaM&amp;cited-by=3D" style=3D"text-d=
+ecoration:none;display:inline-block;line-height:17px;padding:4px 8px 4px 0;=
+mso-padding-alt:0;color:#1a0dab;"><img  src=3D"https://scholar.google.com/i=
+ntl/en/scholar/images/1x/save2-32.png" border=3D"0" height=3D"17" width=3D"=
+17" style=3D"vertical-align:top;"><span style=3D"vertical-align:top;"> Save=
+</span></a></td></tr></tbody></table></div><br><h3 style=3D"font-weight:nor=
+mal;margin:0;font-size:17px;line-height:20px;"><span style=3D"font-size:11p=
+x;font-weight:bold;color:#1a0dab;vertical-align:2px">[PDF]</span> <a href=
+=3D"https://scholar.google.com/scholar_url?url=3Dhttps://tesidottorato.depo=
+sitolegale.it/bitstream/20.500.14242/381513/1/Tesi_dottorato_Scanu.pdf&amp;=
+hl=3Den&amp;sa=3DX&amp;d=3D14076154723449844451&amp;ei=3DB6_UauWhNJHuieoPwt=
+_NKQ&amp;scisig=3DACTRDVH4XuPbR-umwtJSp7sFhzd1&amp;oi=3Dscholaralrt&amp;his=
+t=3Dc8DZm3IAAAAJ:10739191307457540164:ACTRDVGYOUagxNn7-fPqN5cbRcJc&amp;html=
+=3D&amp;pos=3D8&amp;folt=3Dcit&amp;fols=3D" class=3D"gse_alrt_title" style=
+=3D"font-size:17px;color:#1a0dab;line-height:22px">A requirement-driven met=
+hodology for compatibility assessment in storage technology selection for a=
+gri-food traceability</a></h3><div style=3D"color:#006621;line-height:18px"=
+>F Scanu - 2026</div><div class=3D"gse_alrt_sni" style=3D"line-height:17px"=
+>The increasing demand for transparency, food safety, product authenticity,=
+ and <br>regulatory compliance has fostered the adoption of traceability sy=
+stems in the agri-<br>food sector. Several storage technologies can support=
+ these systems, including <br>conventional databases (relational and NoSQL)=
+ and DLT-based platforms such as <br>permissionless and permissioned blockc=
+hains and DAG-based architectures. <br>Although they support similar functi=
+onal objectives, they differ substantially in non=C2=A0=E2=80=A6</div><tabl=
+e cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"padding:8px 0">=
+<tr><td style=3D"line-height:18px;font-size:15px;padding-right:8px;" valign=
+=3D"top">=E2=80=A2</td><td style=3D"line-height:18px;font-size:15px;mso-pad=
+ding-alt:8px 0 4px 0;"><span style=3D"mso-text-raise:4px;">Cites: =E2=80=AA=
+Bitcoin: A peer-to-peer electronic cash system. 2008=E2=80=AC&nbsp;&nbsp;</=
+span><a href=3D"https://scholar.google.com/citations?hl=3Den&amp;user=3Dc8D=
+Zm3IAAAAJ#d=3Dgs_md_cita-d&amp;u=3D/citations%3Fview_op%3Dview_citation%26u=
+ser%3Dc8DZm3IAAAAJ%26citation_for_view%3Dc8DZm3IAAAAJ:KxtntwgDAa4C%26hl%3De=
+n" style=3D"padding:8px 0;"><img height=3D"18" width=3D"21" alt=3D"Edit" st=
+yle=3D"vertical-align:top;" src=3D"https://scholar.google.com/intl/en/schol=
+ar/images/1x/link-36.png"></a></td></tr></table><div style=3D"width:auto"><=
+table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"padding-top=
+:4px;"><tbody><tr><td style=3D"padding-right:4px;mso-padding-alt:4px 16px 0=
+ 0;"><a class=3D"gse_ra_btn" href=3D"https://scholar.google.com/citations?h=
+l=3Den&amp;update_op=3Demail_library_add&amp;info=3D4zKqbiSMWMMJ&amp;citsig=
+=3DAHwi3ncAAAAAbLXihy9vbDQoKuFKu9ENmPGOL7o&amp;cited-by=3D" style=3D"text-d=
+ecoration:none;display:inline-block;line-height:17px;padding:4px 8px 4px 0;=
+mso-padding-alt:0;color:#1a0dab;"><img  src=3D"https://scholar.google.com/i=
+ntl/en/scholar/images/1x/save2-32.png" border=3D"0" height=3D"17" width=3D"=
+17" style=3D"vertical-align:top;"><span style=3D"vertical-align:top;"> Save=
+</span></a></td><td style=3D"padding-right:4px;mso-padding-alt:4px 16px 0 0=
+;"><a class=3D" gse_ra_btn_lact" href=3D"https://scholar.google.com/scholar=
+?q=3Dinfo:4zKqbiSMWMMJ:scholar.google.com/&amp;scioq=3D&amp;output=3Dschola=
+ralrtaa&amp;hl=3Den&amp;hist=3Dc8DZm3IAAAAJ:10739191307457540164:ACTRDVGYOU=
+agxNn7-fPqN5cbRcJc&amp;html=3D&amp;pos=3D8&amp;folt=3Dcit&amp;fols=3D" styl=
+e=3D"text-decoration:none;display:inline-block;line-height:17px;padding:4px=
+ 8px;mso-padding-alt:0;color:#1a0dab;background-color:#f0f4f9;border-radius=
+:4px;padding-right:12px;"><img  src=3D"https://scholar.google.com/intl/en/s=
+cholar/images/1x/ai_answers-32.png" border=3D"0" height=3D"17" width=3D"17"=
+ style=3D"vertical-align:top;"><span style=3D"vertical-align:top;"> Quick r=
+ead</span></a></td></tr></tbody></table></div><br><h3 style=3D"font-weight:=
+normal;margin:0;font-size:17px;line-height:20px;"><a href=3D"https://schola=
+r.google.com/scholar_url?url=3Dhttps://dk.um.si/IzpisGradiva.php%3Fid%3D100=
+483&amp;hl=3Den&amp;sa=3DX&amp;d=3D13780223083696936995&amp;ei=3DB6_UauWhNJ=
+HuieoPwt_NKQ&amp;scisig=3DACTRDVHFlRdgCF3URmr0kNcl_-fn&amp;oi=3Dscholaralrt=
+&amp;hist=3Dc8DZm3IAAAAJ:10739191307457540164:ACTRDVGYOUagxNn7-fPqN5cbRcJc&=
+amp;html=3D&amp;pos=3D9&amp;folt=3Dcit&amp;fols=3D" class=3D"gse_alrt_title=
+" style=3D"font-size:17px;color:#1a0dab;line-height:22px">Analiza razpolo=
+=C5=BEenja na kriptotrgu</a></h3><div style=3D"color:#006621;line-height:18=
+px">M Brus - 2026</div><div class=3D"gse_alrt_sni" style=3D"line-height:17p=
+x">Diplomsko delo se osredoto=C4=8Da na razpolo=C5=BEenje vlagateljev na kr=
+iptotrgu, pri =C4=8Demer je <br>kot osrednji kazalnik uporabljen indeks str=
+ahu in pohlepa. Namen raziskave je bil <br>ugotoviti, kako se razpolo=C5=BE=
+enje na kriptotrgu spreminja skozi =C4=8Das in ali so <br>spremembe razpolo=
+=C5=BEenja povezane s spremembami razpolo=C5=BEenja na delni=C5=A1kem <br>t=
+rgu. V teoreti=C4=8Dnem delu smo predstavili kriptovalute, zna=C4=8Dilnosti=
+ kriptotrga, <br>razpolo=C5=BEenje vlagateljev in na=C4=8Dine merjenja sent=
+imenta na finan=C4=8Dnih trgih. V=C2=A0=E2=80=A6</div><table cellpadding=3D=
+"0" cellspacing=3D"0" border=3D"0" style=3D"padding:8px 0"><tr><td style=3D=
+"line-height:18px;font-size:15px;padding-right:8px;" valign=3D"top">=E2=80=
+=A2</td><td style=3D"line-height:18px;font-size:15px;mso-padding-alt:8px 0 =
+4px 0;"><span style=3D"mso-text-raise:4px;">Cites: =E2=80=AABitcoin: A Peer=
+-to-Peer Electronic Cash System=E2=80=AC&nbsp;&nbsp;</span><a href=3D"https=
+://scholar.google.com/citations?hl=3Den&amp;user=3Dc8DZm3IAAAAJ#d=3Dgs_md_c=
+ita-d&amp;u=3D/citations%3Fview_op%3Dview_citation%26user%3Dc8DZm3IAAAAJ%26=
+citation_for_view%3Dc8DZm3IAAAAJ:aqlVkmm33-oC%26hl%3Den" style=3D"padding:8=
+px 0;"><img height=3D"18" width=3D"21" alt=3D"Edit" style=3D"vertical-align=
+:top;" src=3D"https://scholar.google.com/intl/en/scholar/images/1x/link-36.=
+png"></a></td></tr></table><div style=3D"width:auto"><table cellpadding=3D"=
+0" cellspacing=3D"0" border=3D"0" style=3D"padding-top:4px;"><tbody><tr><td=
+ style=3D"padding-right:4px;mso-padding-alt:4px 16px 0 0;"><a class=3D"gse_=
+ra_btn" href=3D"https://scholar.google.com/citations?hl=3Den&amp;update_op=
+=3Demail_library_add&amp;info=3DI9hkReIvPb8J&amp;citsig=3DAHwi3ncAAAAAbLXih=
+zwjvoW4EsxRb-ahKR7F0_w&amp;cited-by=3D" style=3D"text-decoration:none;displ=
+ay:inline-block;line-height:17px;padding:4px 8px 4px 0;mso-padding-alt:0;co=
+lor:#1a0dab;"><img  src=3D"https://scholar.google.com/intl/en/scholar/image=
+s/1x/save2-32.png" border=3D"0" height=3D"17" width=3D"17" style=3D"vertica=
+l-align:top;"><span style=3D"vertical-align:top;"> Save</span></a></td></tr=
+></tbody></table></div><br><div style=3D"line-height:16px;mso-line-height-r=
+ule:exactly;border-top:1px solid #bdbdbd">&nbsp;</div><p style=3D"margin:8p=
+x 0 16px 0;color:#666">This message was sent by Google Scholar because you'=
+re following new citations to <a href=3D"https://scholar.google.com/citatio=
+ns?hl=3Den&amp;user=3Dc8DZm3IAAAAJ" style=3D"color:#1a0dab;">your profile</=
+a>.<img src=3D"https://scholar.google.com/scholar_url?url=3Dhttps://scholar=
+.google.com/scholar/images/cleardot.gif&amp;hl=3Den&amp;sa=3DX&amp;ei=3DB6_=
+UauWhNJHuieoPwt_NKQ&amp;scisig=3DACTRDVEW5aBRhghCp-rB5JrFqLz1&amp;hist=3Dc8=
+DZm3IAAAAJ:10739191307457540164:ACTRDVGYOUagxNn7-fPqN5cbRcJc&amp;html=3D&am=
+p;folt=3Dcit&amp;fols=3D&amp;lrrs=3D0,1,2,3,4,5,6,7,8,9" height=3D1 width=
+=3D1 alt=3D""></p><div style=3D"margin-bottom:8px;"><div><!--[if gte mso 9]=
+><table border=3D"0" cellspacing=3D"0" cellpadding=3D"0"><tr><td style=3D"m=
+so-line-height-rule:exactly;line-height:27px;border-top:1px solid #fff;bord=
+er-bottom:1px solid #fff;mso-text-raise:-1px;"><![endif]--><a href=3D"https=
+://scholar.google.com/scholar_alerts?view_op=3Dlist_alerts&amp;email_for_op=
+=3Dnakamoto.satoshi.b%40gmail.com&amp;alert_id=3DRDD4b5hFCZUJ&amp;hl=3Den" =
+style=3D"display:inline-block;text-decoration:none;font-family:arial,sans-s=
+erif;font-size:13px;font-size:11px;text-transform:uppercase;font-size:13px;=
+line-height:21px;padding:3px 0;color:#1a0dab;border-top:1px solid transpare=
+nt;border-bottom:1px solid transparent;border-radius:3px;mso-padding-alt:0;=
+mso-border-alt:none;"><span style=3D"mso-text-raise:5px">List alerts</span>=
+</a><!--[if gte mso 9]></td></tr></table><![endif]--></div><div><!--[if gte=
+ mso 9]><table border=3D"0" cellspacing=3D"0" cellpadding=3D"0"><tr><td sty=
+le=3D"mso-line-height-rule:exactly;line-height:27px;border-top:1px solid #f=
+ff;border-bottom:1px solid #fff;mso-text-raise:-1px;"><![endif]--><a href=
+=3D"https://scholar.google.com/scholar_alerts?view_op=3Dcancel_alert_option=
+s&amp;email_for_op=3Dnakamoto.satoshi.b%40gmail.com&amp;alert_id=3DRDD4b5hF=
+CZUJ&amp;hl=3Den&amp;citsig=3DAHwi3ncAAAAAauckB50vwWrYZwGBiGu2WKlNg78" styl=
+e=3D"display:inline-block;text-decoration:none;font-family:arial,sans-serif=
+;font-size:13px;font-size:11px;text-transform:uppercase;font-size:13px;line=
+-height:21px;padding:3px 0;color:#1a0dab;border-top:1px solid transparent;b=
+order-bottom:1px solid transparent;border-radius:3px;mso-padding-alt:0;mso-=
+border-alt:none;"><span style=3D"mso-text-raise:5px">Cancel alert</span></a=
+><!--[if gte mso 9]></td></tr></table><![endif]--></div></div></div><!--[if=
+ gte mso 9]></td></tr></table><![endif]--></body></html>
